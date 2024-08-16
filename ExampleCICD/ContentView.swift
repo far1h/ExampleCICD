@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var text: String = ""
+    @State private var printedText: String = "Hello"
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("I made some changes")
+        VStack (spacing: 10) {
+            TextField("Type your name", text: $text)
+            Button {
+                printedText = printedText + " " + text
+            } label: {
+                Text("Say hello")
+            }
+            Text(printedText)
         }
         .padding()
     }
